@@ -1,48 +1,46 @@
 import './style.css';
 
-const scores = [
-  {
-    name: 'Name',
-    score: 100,
+const nameInputEl = document.getElementById('nameEl');
+const scoreInputEl = document.getElementById('scoreEl');
+const refreshButton = document.getElementById('refresh');
+const addScoreForm = document.getElementById('my-form');
+const recentScoresElement = document.getElementById('scores');
+const leaderBoardApi = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/Zl4d7IVkemOTTVg2fUdz/scores/';
 
-  },
-  {
-    name: 'Name',
-    score: 20,
+const addScores = () => {
+  fetch(leaderBoardApi, {
+    headers: { 'Content-Type': 'application/json' },
+    method: 'post',
+    body: JSON.stringify({
+      user: nameInputEl.value,
+      score: scoreInputEl.value,
+    }),
+  });
+  nameInputEl.value = '';
+  scoreInputEl.value = '';
+};
 
-  },
-  {
-    name: 'Name',
-    score: 50,
-
-  },
-  {
-    name: 'Name',
-    score: 78,
-
-  },
-  {
-    name: 'Name',
-    score: 125,
-
-  },
-  {
-    name: 'Name',
-    score: 77,
-
-  },
-  {
-    name: 'Name',
-    score: 42,
-
-  },
-];
-let scoreData = '';
-scores.forEach((score) => {
-  scoreData += `
-     <li class="score-values">${score.name} : ${score.score}</li>
-  `;
+addScoreForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  addScores();
 });
-const scoresEl = document.querySelector('.scores');
+const recentScores = async () => {
+  const response = await fetch(leaderBoardApi);
+  const processedData = await response.json();
+  recentScoresElement.innerHTML = '';
+  processedData.result.forEach((score) => {
+    recentScoresElement.innerHTML += `
+        <li> ${score.user} : ${score.score}</li>
+      `;
+  });
+};
 
-scoresEl.innerHTML = scoreData;
+refreshButton.addEventListener('click', (e) => {
+  e.preventDefault();
+  recentScores();
+});
+
+window.addEventListener('load', (e) => {
+  e.preventDefault();
+  recentScores();
+});

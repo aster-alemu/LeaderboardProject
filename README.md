@@ -6,6 +6,7 @@ This project is about setting up leaderboard
 - HTML
 - CSS
 - Javascript
+- Webpack
 
 # Getting Started
 

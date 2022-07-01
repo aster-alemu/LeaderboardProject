@@ -1,6 +1,6 @@
 # LeaderboardProject
 
-This project is about setting up leaderboard
+This project is Leaderoard final touch by adding styles
 
 # Built With: 
 - HTML

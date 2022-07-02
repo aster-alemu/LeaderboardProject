@@ -9,15 +9,13 @@ This project is Leaderoard final touch by adding styles
 - Webpack
 
 # Getting Started
-
-
 To get a local copy up and running follow these simple example steps.
-
 
 # Setup
 1. Copy the repository's link and clone it to your local folder.
-- git clone https://github.com/aster-alemu/leaderboardproject
-2. Open folder in any of the text editors.
+- git clone git@github.com:aster-alemu/LeaderboardProject.git
+2. Open folder in any of the text editors and then run the following commands: cd leaderboard npm install npm start
+
 # Author
 
 - GitHub: @AsterAlemu / github.com/aster-alemu
@@ -31,3 +29,11 @@ Feel free to check the issues page and give feedback.
 
 # Show your support
 Give a ⭐️ if you like this project!
+
+ # Acknowledgments
+ - Hat tip to anyone whose code was used
+ - Inspiration
+ - etc
+
+ # License
+ This project is not licensed
